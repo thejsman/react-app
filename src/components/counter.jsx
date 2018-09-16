@@ -1,21 +1,33 @@
 import React, { Component } from "react";
-
+let product = 1;
 class Counter extends Component {
   state = {
-    count: 0,
-    imageUrl: "https://picsum.photos/200"
-  };
+    value: this.props.value,
+   };
+handelIncrement = () => {
+  this.setState( { value : this.state.value + 1})
+}
+  
+
   render() {
+    console.log("Props", this.props);
     return (
       <div>
-        <span className="badge badge-primary m-2">{this.formatCount()}</span>
-        <button className="btn btn-secondar btn-sm">Increment</button>
+        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        <button className="btn btn-secondary btn-sm" onClick={() => this.handelIncrement(product)} >Increment</button>
+        <button className="btn btn-danger m-2" onClick={this.handelDelete}>Delete</button>
       </div>
     );
   }
+  getBadgeClasses() {
+    let classes = "badge m-3 badge-";
+    classes += this.state.value === 0 ? "warning" : "primary";
+    return classes;
+  }
+
   formatCount() {
-    const { count } = this.state;
-    return count === 0 ? "Zero" : count;
+    const { value } = this.state;
+    return value === 0 ? "Zero" : value;
   }
 }
 
