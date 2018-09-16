@@ -15,7 +15,7 @@ handelIncrement = () => {
       <div>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button className="btn btn-secondary btn-sm" onClick={() => this.handelIncrement(product)} >Increment</button>
-        <button className="btn btn-danger m-2" onClick={this.handelDelete}>Delete</button>
+        <button className="btn btn-danger m-2" onClick={this.props.onDelete}>Delete</button>
       </div>
     );
   }
